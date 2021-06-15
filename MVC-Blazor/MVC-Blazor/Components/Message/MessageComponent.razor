@@ -1,0 +1,10 @@
+﻿<h1 class="display-4">
+    @Model.Title
+</h1>
+<p>
+    @Model.Content
+</p>
+@code {
+    [Parameter]
+    public MessageModel Model { get; set; }
+}

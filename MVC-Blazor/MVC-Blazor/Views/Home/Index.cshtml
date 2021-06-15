@@ -1,8 +1,16 @@
-﻿@{
+﻿@using MVC_Blazor.Components.Message;
+@using Microsoft.AspNetCore.Components;
+
+@{
     ViewData["Title"] = "Home Page";
+
+    var componentModel = new MessageModel();
+    componentModel.Title = "Welcome";
+    componentModel.Content = new MarkupString("Learn about <a href='https://docs.microsoft.com/aspnet/core'>building Web apps with ASP.NET Core</a>.");
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <component render-mode="Static"
+               type="typeof(MessageComponent)"
+               param-Model="componentModel"/>
 </div>

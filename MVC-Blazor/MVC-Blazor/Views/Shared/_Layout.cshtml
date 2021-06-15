@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using MVC_Blazor.Components.NavItem
+
+@{
+    var homeNavItem = new NavItem
+    {
+        NavItemContent = Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link text-dark" })
+    };
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,9 +27,9 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                        <component render-mode="Static"
+                                   type="typeof(NavItemComponent)"
+                                   param-Model="homeNavItem" />
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
@@ -41,6 +50,9 @@
             &copy; 2021 - MVC_Blazor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    <script src="_framework/blazor.server.js"></script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
